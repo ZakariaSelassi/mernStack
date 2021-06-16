@@ -38,6 +38,41 @@ app.get('/read', async (req, res) => {
        res.send(result);
    })
 })
+app.put('/update', async (req,res) => {
+    const id = req.body.id;
+    const newFoodName = req.body.newFoodName;
+    const newFoodOrigine = req.body.newFoodOrigine
+    let query = req.body.foodtitle;
+    console.log(query)
+    try{
+       await FoodModel.findById(id,(err ,updatedFood) => {
+                if(updatedFood.foodName != query){
+                    updatedFood.foodName = newFoodName;
+                    updatedFood.origineFood = newFoodOrigine;
+                    updatedFood.save();
+                    res.send("update");
+                }else{
+                    updatedFood.foodName = query;
+                    updatedFood.origineFood = newFoodOrigine;
+                    updatedFood.save();
+                    res.send("update");
+                }
+                
+        
+           
+           
+        });
+    }catch(err){
+        console.error(err)
+    }
+})
+
+app.delete('/delete/:id', async  (req,res) =>{
+    const id = req.params.id;
+    await FoodModel.findByIdAndRemove(id).exec();
+    res.send("delete");
+
+})
 app.listen(3001,() => {
     console.log('Server running on port 3001...');
 })

@@ -4,7 +4,7 @@ const FoodSchema = new mongoose.Schema({
 
     foodName: {
         type: String,
-        required: true,
+        required: false,
     },
     origineFood: {
         type: String,

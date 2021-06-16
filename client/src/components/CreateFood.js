@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import './CreateFood.css'
+import {Link} from 'react-router-dom'
 import axios from 'axios'
 const CreateFood = () => {
     const [foodName,setFoodName] = useState('')
@@ -22,6 +23,9 @@ const CreateFood = () => {
             <label>Tasty rate :</label>
             <input type="number" onChange={(event) =>{ setTasty(event.target.value)} } />
             <button onClick={addToList}>Add</button>
+            <div>
+            <Link to="/" exact>To list food</Link>
+            </div>
         </div>
     );
 };

@@ -1,5 +1,3 @@
-.App {
-  display:flex;
-  flex-direction:column;
-  text-align: center;
+.containerList{
+    border:1px solid black
 }
